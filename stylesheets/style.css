@@ -1,0 +1,120 @@
+*, 
+*::before, 
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16pt;
+    color: white;
+    line-height: 1.5;
+}
+
+.playground {
+    background-color: rgb(139, 86, 219);
+    height: 100vh;
+    width: auto;
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    align-items: center;
+    justify-items: center;
+}
+.game-btn {
+    border: 0;
+    outline: 0;
+    padding: 5% 30%;
+    font-size: 0.7rem;
+    font-family: inherit;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black inset;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.53);
+    cursor: pointer;
+}
+
+.lhs {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    padding: 0 10px;
+}
+.lhs > button {
+    background-color: rgb(254, 107, 91);
+    color: white;
+}
+
+.game {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: row;
+    gap: 2px;
+    background-color: rgb(40, 40, 40);
+}
+.cell {
+    height: 100%;
+    width: auto;
+    background-color: rgb(139, 86, 219);
+    font-size: 30vh;
+    text-align: center;
+    line-height: calc((100vh - 4px)/3);
+}
+
+.rhs {
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+}
+.player-names {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: stretch;
+}
+.player-name {
+    position: relative;
+    margin-bottom: 10px;
+}
+.player-name > label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    position: absolute;
+    top: 10pt;
+    left: 0;
+    color: rgb(182, 180, 180);
+    transition: all 0.2s ease-in-out;
+}
+.player-input {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid rgb(237, 237, 237);
+    width: 100%;
+    line-height: 2;
+    color: white;
+    font-size: 1rem;
+}
+.player-input:focus ~ label {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    top: -16pt;
+    color: white;
+}
+.player-input:not(:placeholder-shown) ~ label {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    top: -16pt;
+    color: white;
+}
+.player-names > button {
+    color: white;
+    background-color: rgb(85, 130, 85);
+}
