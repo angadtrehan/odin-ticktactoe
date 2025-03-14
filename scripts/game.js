@@ -19,12 +19,13 @@ function Player() {
 }
 
 export function Game() {
-    const gameboard = GameBoard();
-    const playerOne = Player();
-    const playerTwo = Player();
-    const players = [];
+    let gameboard = GameBoard();
+    let playerOne = Player();
+    let playerTwo = Player();
+    let players = [];
     let currentPlayer;
-    let winner;
+    let winner = false;
+    let moveCount = 0;
 
     const getCurrentPlayer = () => currentPlayer;
     const getWinner = () => {
@@ -37,8 +38,8 @@ export function Game() {
         currentPlayer = currentPlayer === players[0] ? players[1] : players[0];
     };
     const printNewRound = () => {
-        gameboard.printSpots();
         console.log(`${currentPlayer.getName()}'s turn.`);
+        gameboard.printSpots();
     };
     const playRound = (row, column) => {
         console.log(`Putting ${currentPlayer.getName()}'s token in spot ${row}/${column}`);
@@ -48,6 +49,7 @@ export function Game() {
                 winner = true;
                 return;
             }
+            moveCount++;
             switchCurrentPlayer();
         }
         printNewRound();
@@ -66,11 +68,28 @@ export function Game() {
         console.log(`Starting game.`);
         printNewRound();
     };
+    const isDraw = () => {
+        if (moveCount >= 9 && winner === false) {
+            return true;
+        }
+        return false;
+    };
+    const reset = () => {
+        gameboard = GameBoard();
+        playerOne = Player();
+        playerTwo = Player();
+        players = [];
+        currentPlayer = undefined;
+        winner = false;
+        moveCount = 0;
+    };
 
     return {
         initialize,
         getWinner,
         getCurrentPlayer,
-        playRound
+        playRound,
+        isDraw,
+        reset
     };
 }
